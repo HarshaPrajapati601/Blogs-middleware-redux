@@ -1,11 +1,11 @@
 import React from 'react';
-import {fetchPosts} from '../actions';
+import {fetchPostsAndUsers} from '../actions';
 import {connect} from 'react-redux';
 import UsersHeader from './UsersHeader';
 
 class PostList extends React.Component{
     componentDidMount(){
-        this.props.fetchPosts();
+        this.props.fetchPostsAndUsers();
     }
     renderedlist(){
         return this.props.posts.map(objPost=>{
@@ -36,12 +36,11 @@ class PostList extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return{
         posts: state.posts
     }
 }
 
 export default connect(
-    mapStateToProps,{fetchPosts}
+    mapStateToProps,{fetchPostsAndUsers}
     )(PostList);
